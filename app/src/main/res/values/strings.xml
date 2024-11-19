@@ -13,4 +13,6 @@
     <string name="lenguaje_de_marcas">Lenguaje de marcas</string>
     <string name="entornos_de_desarrollo">Entornos de desarrollo</string>
     <string name="registrarse">Registrarse</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrase_a">Contraseña</string>
 </resources>
