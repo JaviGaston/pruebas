@@ -1,81 +1,68 @@
 package com.example.entregapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.room.Room
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.second_activity)
+        setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        /*
         val buttonLogin: Button = findViewById(R.id.buttonLogin)
         val buttonExit: Button = findViewById(R.id.buttonExit)
+        val buttonRegister: Button = findViewById(R.id.buttonRegister)
         val editText: EditText = findViewById(R.id.editTextUser)
         val editTextPassword: EditText = findViewById(R.id.editTextPassword2)
-        var user: String = editText.text.toString()
-        var password: String = editTextPassword.text.toString()
-
-         */
-
-        val button: Button = findViewById(R.id.button)
-        val editTextName: EditText = findViewById(R.id.editTextTextName)
-        val editTextFirstSurname: EditText = findViewById(R.id.editTextTextFirstSurname)
-        val editTextSecondSurname: EditText = findViewById(R.id.editTextTextSecondSurname)
-        val editTextProgamacion: EditText = findViewById(R.id.editTextTextProgramacion)
-        val editTextBases: EditText = findViewById(R.id.editTextTextBases)
-        val editTextSistemas: EditText = findViewById(R.id.editTextTextSistemas)
-        val editTextMarcas: EditText = findViewById(R.id.editTextTextMarcas)
-        val editTextEntornos: EditText = findViewById(R.id.editTextTextEntornos)
+        var userLogin: String = editText.text.toString()
+        var passwordLogin: String = editTextPassword.text.toString()
 
         val db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "AppDatabase"
         ).allowMainThreadQueries().build()
-        /*
+
         buttonLogin.setOnClickListener {
-            var userLogin: String = editText.text.toString()
-            var passwordLogin: String = editTextPassword.text.toString()
-            val user = User(userName = userLogin, password = passwordLogin)
-            db.userDao().insertAll(user)
-            Log.d("hola", "usuario introducido")
+            val passwordDB : String = db.userDao().getPasswordByUserName(userLogin)
+            if (validate(passwordDB,passwordLogin)){
+                val intent = Intent(this, AddStudentActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this, "Usuario o contraseña incorrectas", Toast.LENGTH_LONG
+                ).show()
+            }
         }
 
-         */
-
-        button.setOnClickListener {
-            var name: String = editTextName.text.toString()
-            var firstSurname: String = editTextFirstSurname.text.toString()
-            var secondSurname: String = editTextSecondSurname.text.toString()
-            var programacion: Int = editTextProgamacion.text.toString().toInt()
-            var bases: Int = editTextBases.text.toString().toInt()
-            var sistemas: Int = editTextSistemas.text.toString().toInt()
-            var marcas: Int = editTextMarcas.text.toString().toInt()
-            var entornos: Int = editTextEntornos.text.toString().toInt()
-
-            val student = Student(
-                studentname = name,
-                firstSurname = firstSurname,
-                secondSurname = secondSurname,
-                programacion = programacion,
-                basesdedatos = bases,
-                sistemas = sistemas,
-                marcas = marcas,
-                entornos = entornos
-            )
-            db.studentDao().insertAll(student)
+        buttonRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
+
+        buttonExit.setOnClickListener{
+            exitProcess(0)
+        }
+    }
+    fun validate(passwordDb: String, password: String): Boolean {
+        val ret: Boolean
+        if (password == passwordDb)
+            ret = true
+        else
+            ret = false
+        return ret
     }
 }

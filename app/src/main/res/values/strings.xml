@@ -2,4 +2,15 @@
     <string name="app_name">EntregApp</string>
     <string name="login">Login</string>
     <string name="salir">Salir</string>
+    <string name="agregar">Agregar</string>
+    <string name="name">Name</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido_1">Apellido 1</string>
+    <string name="apellido_2">Apellido 2</string>
+    <string name="programaci_n">Programación</string>
+    <string name="base_de_datos">Base de datos</string>
+    <string name="sistemas_inform_ticos">Sistemas informáticos</string>
+    <string name="lenguaje_de_marcas">Lenguaje de marcas</string>
+    <string name="entornos_de_desarrollo">Entornos de desarrollo</string>
+    <string name="registrarse">Registrarse</string>
 </resources>

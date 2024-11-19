@@ -15,4 +15,7 @@ interface UserDao {
 
     @Delete
     fun delete(user: User)
+
+    @Query("SELECT password FROM users WHERE userName LIKE:userName")
+    fun getPasswordByUserName(userName: String): String
 }
