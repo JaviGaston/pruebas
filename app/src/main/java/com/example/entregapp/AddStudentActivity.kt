@@ -21,6 +21,7 @@ class AddStudentActivity : AppCompatActivity() {
         }
 
         val button: Button = findViewById(R.id.button)
+        val buttonRetun: Button = findViewById(R.id.button2)
         val editTextName: EditText = findViewById(R.id.editTextTextName)
         val editTextFirstSurname: EditText = findViewById(R.id.editTextTextFirstSurname)
         val editTextSecondSurname: EditText = findViewById(R.id.editTextTextSecondSurname)
@@ -56,6 +57,10 @@ class AddStudentActivity : AppCompatActivity() {
                 entornos = entornos
             )
             db.studentDao().insertAll(student)
+        }
+
+        buttonRetun.setOnClickListener {
+            finish()
         }
     }
 }

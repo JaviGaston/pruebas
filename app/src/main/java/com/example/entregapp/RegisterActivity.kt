@@ -42,7 +42,7 @@ class RegisterActivity : AppCompatActivity() {
             else if (etPassword.text == null && etPassword.text.isEmpty())
                 Toast.makeText(this, "Rellena el password", Toast.LENGTH_SHORT).show()
             else {
-                val user : User = User(0,
+                val user = User(0,
                     userName = etUser.text.toString(),
                     password = etPassword.text.toString())
                     db.userDao().insertAll(user)
