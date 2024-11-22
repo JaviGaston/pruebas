@@ -36,14 +36,14 @@ class AddStudentActivity : AppCompatActivity() {
         ).allowMainThreadQueries().build()
 
         button.setOnClickListener {
-            var name: String = editTextName.text.toString()
-            var firstSurname: String = editTextFirstSurname.text.toString()
-            var secondSurname: String = editTextSecondSurname.text.toString()
-            var programacion: Int = editTextProgamacion.text.toString().toInt()
-            var bases: Int = editTextBases.text.toString().toInt()
-            var sistemas: Int = editTextSistemas.text.toString().toInt()
-            var marcas: Int = editTextMarcas.text.toString().toInt()
-            var entornos: Int = editTextEntornos.text.toString().toInt()
+            val name: String = editTextName.text.toString()
+            val firstSurname: String = editTextFirstSurname.text.toString()
+            val secondSurname: String = editTextSecondSurname.text.toString()
+            val programacion: Int = editTextProgamacion.text.toString().toInt()
+            val bases: Int = editTextBases.text.toString().toInt()
+            val sistemas: Int = editTextSistemas.text.toString().toInt()
+            val marcas: Int = editTextMarcas.text.toString().toInt()
+            val entornos: Int = editTextEntornos.text.toString().toInt()
 
             val student = Student(
                 studentname = name,

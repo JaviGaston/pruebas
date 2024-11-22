@@ -2,7 +2,6 @@ package com.example.entregapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -27,9 +26,7 @@ class MainActivity : AppCompatActivity() {
         val buttonExit: Button = findViewById(R.id.buttonExit)
         val buttonRegister: Button = findViewById(R.id.buttonRegister)
         val editText: EditText = findViewById(R.id.editTextUser)
-        val editTextPassword: EditText = findViewById(R.id.editTextPassword2)
-        var userLogin: String = editText.text.toString()
-        var passwordLogin: String = editTextPassword.text.toString()
+        val editTextPassword: EditText = findViewById(R.id.editTextPassword)
 
         val db = Room.databaseBuilder(
             applicationContext,
@@ -37,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         ).allowMainThreadQueries().build()
 
         buttonLogin.setOnClickListener {
+            val userLogin: String = editText.text.toString()
+            val passwordLogin: String = editTextPassword.text.toString()
             val passwordDB : String = db.userDao().getPasswordByUserName(userLogin)
             if (validate(passwordDB,passwordLogin)){
                 val intent = Intent(this, AddStudentActivity::class.java)
