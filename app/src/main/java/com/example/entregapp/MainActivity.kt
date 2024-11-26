@@ -27,6 +27,13 @@ class MainActivity : AppCompatActivity() {
         val buttonRegister: Button = findViewById(R.id.buttonRegister)
         val editText: EditText = findViewById(R.id.editTextUser)
         val editTextPassword: EditText = findViewById(R.id.editTextPassword)
+        val user:String? = intent.getStringExtra("userName")
+        val password:String? = intent.getStringExtra("password")
+
+        if(user != null && password != null){
+            editText.setText(user)
+            editTextPassword.setText(password)
+        }
 
         val db = Room.databaseBuilder(
             applicationContext,
@@ -50,18 +57,14 @@ class MainActivity : AppCompatActivity() {
         buttonRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         buttonExit.setOnClickListener{
             exitProcess(0)
         }
     }
-    fun validate(passwordDb: String, password: String): Boolean {
-        val ret: Boolean
-        if (password == passwordDb)
-            ret = true
-        else
-            ret = false
-        return ret
+    private fun validate(passwordDb: String, password: String): Boolean {
+        return password == passwordDb
     }
 }

@@ -16,4 +16,7 @@
     <string name="usuario">Usuario</string>
     <string name="contrase_a">Contraseña</string>
     <string name="volver">Volver</string>
+    <string name="elorrieta">ELORRIETA</string>
+    <string name="registro">REGISTRO</string>
+    <string name="estudiante">ESTUDIANTE</string>
 </resources>

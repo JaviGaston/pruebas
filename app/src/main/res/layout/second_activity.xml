@@ -7,121 +7,178 @@
     android:layout_height="match_parent"
     tools:context=".AddStudentActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/estudiante"
+        android:fontFamily="sans-serif-black"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:textColor="@color/darkGreen"
+        android:gravity="center"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="40dp" />
+
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/agregar"
+        android:backgroundTint="@color/green"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:cornerRadius="0dp"
+        app:layout_constraintHeight_percent="0.055"
+        app:layout_constraintWidth_percent="0.45"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEntornos" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
-    <EditText
-        android:id="@+id/editTextTextName"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/nombre"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextFirstSurname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextFirstSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/apellido_1"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextSecondSurname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
-
-    <EditText
-        android:id="@+id/editTextTextSecondSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/apellido_2"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextProgramacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextFirstSurname" />
-
-    <EditText
-        android:id="@+id/editTextTextProgramacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/programaci_n"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextBases"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextSecondSurname" />
-
-    <EditText
-        android:id="@+id/editTextTextBases"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/base_de_datos"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextSistemas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextProgramacion" />
-
-    <EditText
-        android:id="@+id/editTextTextSistemas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/sistemas_inform_ticos"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMarcas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextBases" />
-
-    <EditText
-        android:id="@+id/editTextTextMarcas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/lenguaje_de_marcas"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEntornos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextSistemas" />
-
-    <EditText
-        android:id="@+id/editTextTextEntornos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="@string/entornos_de_desarrollo"
+        android:layout_height="240dp"
+        android:scrollbars="vertical"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMarcas" />
+        tools:layout_editor_absoluteX="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/nombre"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextFirstSurname"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTextFirstSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/apellido_1"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextSecondSurname"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
+
+            <EditText
+                android:id="@+id/editTextTextSecondSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/apellido_2"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextProgramacion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextFirstSurname" />
+
+            <EditText
+                android:id="@+id/editTextTextProgramacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="@string/programaci_n"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextBases"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextSecondSurname" />
+
+            <EditText
+                android:id="@+id/editTextTextBases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="@string/base_de_datos"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextSistemas"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextProgramacion" />
+
+            <EditText
+                android:id="@+id/editTextTextSistemas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="@string/sistemas_inform_ticos"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextMarcas"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextBases" />
+
+            <EditText
+                android:id="@+id/editTextTextMarcas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="@string/lenguaje_de_marcas"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextEntornos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextSistemas" />
+
+            <EditText
+                android:id="@+id/editTextTextEntornos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="@string/entornos_de_desarrollo"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextMarcas" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/volver"
+        android:backgroundTint="@color/green"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:cornerRadius="0dp"
+        app:layout_constraintHeight_percent="0.055"
+        app:layout_constraintWidth_percent="0.45"
         tools:layout_editor_absoluteX="278dp"
         tools:layout_editor_absoluteY="651dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEntornos"/>
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
