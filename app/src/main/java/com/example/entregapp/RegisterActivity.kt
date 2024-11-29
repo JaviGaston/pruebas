@@ -41,10 +41,9 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         buttonRegister.setOnClickListener {
-            if(etUser.text == null || etUser.text.isEmpty())
-                Toast.makeText(this, "Rellena el usuario", Toast.LENGTH_SHORT).show()
-            else if (etPassword.text == null && etPassword.text.isEmpty())
-                Toast.makeText(this, "Rellena el password", Toast.LENGTH_SHORT).show()
+            if(etUser.text == null || etUser.text.isEmpty() ||
+                etPassword.text == null || etPassword.text.isEmpty())
+                Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT).show()
             else {
                 val userName:String = etUser.text.toString()
                 val password:String = etPassword.text.toString()

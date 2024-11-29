@@ -3,6 +3,7 @@ package com.example.entregapp
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -37,26 +38,54 @@ class AddStudentActivity : AppCompatActivity() {
         ).allowMainThreadQueries().build()
 
         button.setOnClickListener {
-            val name: String = editTextName.text.toString()
-            val firstSurname: String = editTextFirstSurname.text.toString()
-            val secondSurname: String = editTextSecondSurname.text.toString()
-            val programacion: Int = editTextProgamacion.text.toString().toInt()
-            val bases: Int = editTextBases.text.toString().toInt()
-            val sistemas: Int = editTextSistemas.text.toString().toInt()
-            val marcas: Int = editTextMarcas.text.toString().toInt()
-            val entornos: Int = editTextEntornos.text.toString().toInt()
+            if (editTextName.text == null || editTextName.text.isEmpty() ||
+                editTextFirstSurname.text == null || editTextFirstSurname.text.isEmpty() ||
+                editTextSecondSurname.text == null || editTextSecondSurname.text.isEmpty() ||
+                editTextProgamacion.text == null || editTextProgamacion.text.isEmpty() ||
+                editTextBases.text == null || editTextBases.text.isEmpty() ||
+                editTextSistemas.text == null || editTextSistemas.text.isEmpty() ||
+                editTextMarcas.text == null || editTextMarcas.text.isEmpty() ||
+                editTextEntornos.text == null || editTextEntornos.text.isEmpty()
+            ) {
+                Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT).show()
+            } else {
+                val name: String = editTextName.text.toString()
+                val firstSurname: String = editTextFirstSurname.text.toString()
+                val secondSurname: String = editTextSecondSurname.text.toString()
+                val programacion: Int = editTextProgamacion.text.toString().toInt()
+                val bases: Int = editTextBases.text.toString().toInt()
+                val sistemas: Int = editTextSistemas.text.toString().toInt()
+                val marcas: Int = editTextMarcas.text.toString().toInt()
+                val entornos: Int = editTextEntornos.text.toString().toInt()
 
-            val student = Student(
-                studentname = name,
-                firstSurname = firstSurname,
-                secondSurname = secondSurname,
-                programacion = programacion,
-                basesdedatos = bases,
-                sistemas = sistemas,
-                marcas = marcas,
-                entornos = entornos
-            )
-            db.studentDao().insertAll(student)
+                val students: List<Student> = db.studentDao().getAll()
+
+                if (!students.any { it.studentname == name && it.firstSurname == firstSurname && it.secondSurname == secondSurname }) {
+                    val student = Student(
+                        studentname = name,
+                        firstSurname = firstSurname,
+                        secondSurname = secondSurname,
+                        programacion = programacion,
+                        basesdedatos = bases,
+                        sistemas = sistemas,
+                        marcas = marcas,
+                        entornos = entornos
+                    )
+                    db.studentDao().insertAll(student)
+                    editTextName.text.clear()
+                    editTextFirstSurname.text.clear()
+                    editTextSecondSurname.text.clear()
+                    editTextProgamacion.text.clear()
+                    editTextBases.text.clear()
+                    editTextSistemas.text.clear()
+                    editTextMarcas.text.clear()
+                    editTextEntornos.text.clear()
+                } else {
+                    Toast.makeText(this, "Error, el estudiante ya tiene notas", Toast.LENGTH_SHORT)
+                        .show()
+
+                }
+            }
         }
 
         buttonRetun.setOnClickListener {
